@@ -5,6 +5,9 @@ import jakarta.persistence.*;
 
 import java.util.List;
 
+//Job.skills already exists. What needs to change and/or be added to map this relationship?
+//Be sure to check the whole class for any necessary type updates.
+
 @Entity
 public class Job extends AbstractEntity{
 
@@ -17,7 +20,7 @@ public class Job extends AbstractEntity{
     @ManyToOne
     private Employer employer;
 
-
+    @ManyToMany
     private List<Skill> skills;
 
 
@@ -25,10 +28,10 @@ public class Job extends AbstractEntity{
     }
 
     // Initialize the id and value fields.
-    public Job(Employer anEmployer, List<Skill> someSkills) {
+    public Job(Employer anEmployer, List<Skill> skills) {
         super();
         this.employer = anEmployer;
-        this.skills = someSkills;
+        this.skills = skills;
     }
 
     // Getters and setters.
