@@ -5,6 +5,7 @@ Employer varchar (225),
 Skills varchar (225)
 
 --Part 2
+SELECT name FROM employer WHERE location = "St. Louis City";
 
 --Part 3
 
