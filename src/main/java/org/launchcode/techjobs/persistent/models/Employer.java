@@ -11,10 +11,18 @@ import java.util.List;
 
 @Entity
 public class Employer extends AbstractEntity {
-
     @NotNull
     @Size(min = 0, max = 200)
-    String location;
+    private String location;
+
+    //Within Employer, add a private property jobs of type List<Job> and initialize it to an empty ArrayList.
+    //After we set up the Job class to work with Employer objects, this list will represent the list of all items in a given job.
+    @OneToMany
+    @JoinColumn(name = "employer_id")
+    private final List<Job> jobs = new ArrayList<>();
+
+    //Use the @OneToMany and @JoinColumn annotations on the jobs list in Employer to declare the relationship between data tables.
+    //Recall that this annotation needs a name parameter. What should its value be?
 
     public String getLocation() {
         return location;
@@ -26,9 +34,7 @@ public class Employer extends AbstractEntity {
 
     public Employer() {};
 
-    @OneToMany
-    @JoinColumn(name = "employerId")
-    private List<Job> jobs = new ArrayList<>();
-
-
+    public List<Job> getJobs() {
+        return jobs;
+    }
 }
